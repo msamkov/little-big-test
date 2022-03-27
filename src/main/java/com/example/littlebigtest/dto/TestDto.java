@@ -20,5 +20,5 @@ public class TestDto {
     private String name;
 
     @JsonProperty(value = "kpp")
-    private String desc;
+    private String description;
 }

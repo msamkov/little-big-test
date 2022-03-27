@@ -17,6 +17,6 @@ public class TestAddDto {
     private String name;
 
     @NotBlank
-    private String desc;
+    private String description;
 
 }
