@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres:14.2
+    environment:
+      - POSTGRES_DB=little_big_db
+      - POSTGRES_USER=little_big_user
+      - POSTGRES_PASSWORD=0f595fea-b2a9-489b
+    ports:
+      - 54310:5432
+    expose:
+      - 5432
+    volumes:
+      - postgres-db-data:/var/lib/postgresql/data/
+    networks:
+      - backend
+    # max_connections = 500
+    command: postgres -N 500
+
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres-db-data:
+
+
