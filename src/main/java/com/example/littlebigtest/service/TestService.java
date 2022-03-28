@@ -2,6 +2,8 @@ package com.example.littlebigtest.service;
 
 import com.example.littlebigtest.dto.TestAddDto;
 import com.example.littlebigtest.dto.TestDto;
+import com.example.littlebigtest.dto.TestListDto;
+import com.example.littlebigtest.dto.TestUpdDto;
 import com.example.littlebigtest.exception.TestNotFoundException;
 import com.example.littlebigtest.mapper.TestMapper;
 import com.example.littlebigtest.model.TestEntity;
@@ -10,6 +12,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class TestService {
@@ -17,7 +23,7 @@ public class TestService {
     private final TestRepository testRepository;
     private final TestMapper testMapper;
 
-    public TestDto addTest(TestAddDto testAddDto) {
+    public TestDto addTest(final TestAddDto testAddDto) {
         final TestEntity newTestEntity = testMapper.toTestEntity(testAddDto);
         final TestEntity addTestEntity = testRepository.save(newTestEntity);
         return testMapper.toTestDto(addTestEntity);
@@ -30,6 +36,22 @@ public class TestService {
         testRepository.deleteById(testEntity.getId());
     }
 
+    public TestListDto list() {
+        return testMapper.toTestListDto(testRepository.findAll());
+    }
 
+    public Optional<TestDto> findById(final long id) {
+        return testRepository.findById(id)
+                .map(testMapper::toTestDto);
+    }
+
+    @Transactional
+    public TestDto update(final long id, final TestUpdDto testUpdDto) {
+        final TestEntity testEntity = testRepository.findById(id)
+                .orElseThrow(() -> new TestNotFoundException(id));
+        testEntity.setName(testUpdDto.getName());
+        testEntity.setDescription(testUpdDto.getDescription());
+        return testMapper.toTestDto(testRepository.save(testEntity));
+    }
 
 }

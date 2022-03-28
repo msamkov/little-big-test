@@ -6,6 +6,10 @@
 
     <changeSet id="exam-weapon" author="mv.samkov">
         <sql>
+            SELECT setval('tests_id_seq', 1, true);
+            SELECT setval('questions_id_seq', 3, true);
+            SELECT setval('answers_id_seq', 9, true);
+
             INSERT INTO tests(id, name, description) VALUES (1, 'ОБРАЩЕНИЯ С ОРУЖИЕМ',
             'ТРЕНИРОВОЧНЫЕ ВОПРОСЫ ДЛЯ ПРОВЕРКИ ЗНАНИЯ ПРАВИЛ БЕЗОПАСНОГО ОБРАЩЕНИЯ С ОРУЖИЕМ');
 

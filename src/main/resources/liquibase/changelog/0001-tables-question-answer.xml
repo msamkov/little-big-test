@@ -10,12 +10,67 @@
             <column name="id" type="bigserial">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="text"/>
-            <column name="description" type="text"/>
-            <column name="created_at" type="timestamp">
+            <column name="name" type="text">
                 <constraints nullable="false"/>
             </column>
-            <column name="modified_at" type="timestamp">
+            <column name="description" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="questions" remarks="Таблица с вопросами">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="question" type="text">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="test_id" type="bigint" remarks="Ссылается на ID теста">
+                <constraints foreignKeyName="questions_test_id_fk"
+                             referencedTableName="tests"
+                             referencedColumnNames="id"
+                             nullable="false"
+                />
+            </column>
+
+            <column name="created_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="answers" remarks="Таблица с ответами">
+            <column name="id" type="bigserial">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="answer" type="text">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_correct" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="question_id" type="bigint" remarks="Ссылается на ID таблица с вопросами">
+                <constraints foreignKeyName="answers_question_id_fk"
+                             referencedTableName="questions"
+                             referencedColumnNames="id"
+                             nullable="false"
+                />
+            </column>
+
+            <column name="created_at" type="timestamp" defaultValueComputed="now()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_at" type="timestamp" defaultValueComputed="now()">
                 <constraints nullable="false"/>
             </column>
         </createTable>
