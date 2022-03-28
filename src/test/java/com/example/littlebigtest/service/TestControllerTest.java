@@ -27,7 +27,7 @@ public class TestControllerTest extends AbstractIntegrationTest {
         final TestDto actualTest = testController.add(testAddDto);
 
         // assert
-        Assertions.assertEquals(excpectedTest.getName()+ "test", actualTest.getName());
+        Assertions.assertEquals(excpectedTest.getName(), actualTest.getName());
         Assertions.assertEquals(excpectedTest.getDescription(), actualTest.getDescription());
     }
 
