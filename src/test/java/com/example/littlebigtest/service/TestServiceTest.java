@@ -8,13 +8,23 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
-public class TestControllerTest extends AbstractIntegrationTest {
+public class TestServiceTest extends AbstractIntegrationTest {
 
     @SpyBean
-    private TestController testController;
+    private TestService testService;
 
     @Test
-    public void testAdd() {
+    public void crudTest() {
+        testAdd();
+        testAdd();
+        // list
+        // delete
+        // show
+        // update
+
+    }
+
+    public TestDto testAdd() {
         // arrange
         final String name = "Name 1001";
         final String description = "Desc 1002";
@@ -24,11 +34,12 @@ public class TestControllerTest extends AbstractIntegrationTest {
         final TestAddDto testAddDto = new TestAddDto(name, description);
 
         // act
-        final TestDto actualTest = testController.add(testAddDto);
+        final TestDto actualTest = testService.addTest(testAddDto);
 
         // assert
         Assertions.assertEquals(excpectedTest.getName(), actualTest.getName());
         Assertions.assertEquals(excpectedTest.getDescription(), actualTest.getDescription());
+        return actualTest;
     }
 
 }
