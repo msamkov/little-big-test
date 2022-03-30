@@ -19,9 +19,9 @@ public class QuestionController {
     private final QuestionService questionService;
 
     // add
-    @PostMapping(value = "/api/v1/test/add")
-    public QuestionDto add(@Valid @RequestBody final QuestionAddDto testAddDto) {
-        return questionService.addQuestion(testAddDto);
+    @PostMapping(value = "/api/v1/question/add")
+    public QuestionDto add(@Valid @RequestBody final QuestionAddDto questionAddDto) {
+        return questionService.addQuestion(questionAddDto);
     }
 
 
