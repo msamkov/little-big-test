@@ -41,10 +41,8 @@ public class TestController {
     }
 
     @GetMapping(value = "/api/v1/test/show/{id}")
-    public ResponseEntity<TestDto> show(@PathVariable("id") final long id) {
-        return testService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public TestDto show(@PathVariable("id") final long id) {
+        return testService.findById(id);
     }
 
     @PutMapping(value = "/api/v1/test/update/{id}")

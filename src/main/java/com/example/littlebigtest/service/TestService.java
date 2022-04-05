@@ -40,9 +40,10 @@ public class TestService {
         return testMapper.toTestListDto(testRepository.findAll());
     }
 
-    public Optional<TestDto> findById(final long id) {
+    public TestDto findById(final long id) {
         return testRepository.findById(id)
-                .map(testMapper::toTestDto);
+                .map(testMapper::toTestDto)
+                .orElseThrow(() -> new TestNotFoundException(id));
     }
 
     @Transactional
