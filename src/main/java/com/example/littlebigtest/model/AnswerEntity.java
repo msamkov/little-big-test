@@ -13,33 +13,32 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import java.util.ArrayList;
-import java.util.List;
 
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
-@Table(name = "tests")
+@Table(name = "answers")
 @AllArgsConstructor
 @NoArgsConstructor
 @Accessors(chain = true)
-public class TestEntity extends AbstractEntity {
+public class AnswerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "answer", nullable = false)
+    private String answer;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "is_correct", nullable = false)
+    private boolean correct;
 
-    @OneToMany(mappedBy = "test", fetch = FetchType.LAZY,
-            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    private List<QuestionEntity> questions = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "question_id")
+    private QuestionEntity question;
 
 }

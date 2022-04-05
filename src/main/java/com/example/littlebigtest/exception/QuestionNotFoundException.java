@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class TestNotFoundException extends RuntimeException {
+public class QuestionNotFoundException extends RuntimeException {
 
-    public TestNotFoundException(final long id) {
-        super(String.format("Test with id %s not found", id)) ;
+    public QuestionNotFoundException(final long id) {
+        super(String.format("Question with id %s not found", id)) ;
     }
 }
