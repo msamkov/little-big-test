@@ -52,6 +52,7 @@ public class TestService {
                 .orElseThrow(() -> new TestNotFoundException(id));
         testEntity.setName(testUpdDto.getName());
         testEntity.setDescription(testUpdDto.getDescription());
+        testEntity.setRequiredAnswers(testUpdDto.getRequiredAnswers());
         return testMapper.toTestDto(testRepository.save(testEntity));
     }
 

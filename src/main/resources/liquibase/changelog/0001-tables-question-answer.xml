@@ -16,6 +16,11 @@
             <column name="description" type="text">
                 <constraints nullable="false"/>
             </column>
+
+            <column name="required_answers" type="integer" remarks="Необходимое количество верных ответов">
+                <constraints nullable="false"/>
+            </column>
+
             <column name="created_at" type="timestamp" defaultValueComputed="now()">
                 <constraints nullable="false"/>
             </column>

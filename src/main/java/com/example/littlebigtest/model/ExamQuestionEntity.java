@@ -1,6 +1,6 @@
 package com.example.littlebigtest.model;
 
-public class ExamQuestion {
+public class ExamQuestionEntity {
 
     // examId
 

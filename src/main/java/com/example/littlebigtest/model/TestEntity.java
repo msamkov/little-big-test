@@ -38,6 +38,10 @@ public class TestEntity extends AbstractEntity {
     @Column(name = "description", nullable = false)
     private String description;
 
+    // Необходимое количество верных ответов
+    @Column(name = "required_answers", nullable = false)
+    private Integer requiredAnswers;
+
     @OneToMany(mappedBy = "test", fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<QuestionEntity> questions = new ArrayList<>();

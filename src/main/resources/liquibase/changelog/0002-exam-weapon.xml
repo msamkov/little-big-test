@@ -10,8 +10,8 @@
             SELECT setval('questions_id_seq', 3, true);
             SELECT setval('answers_id_seq', 9, true);
 
-            INSERT INTO tests(id, name, description) VALUES (1, 'ОБРАЩЕНИЯ С ОРУЖИЕМ',
-            'ТРЕНИРОВОЧНЫЕ ВОПРОСЫ ДЛЯ ПРОВЕРКИ ЗНАНИЯ ПРАВИЛ БЕЗОПАСНОГО ОБРАЩЕНИЯ С ОРУЖИЕМ');
+            INSERT INTO tests(id, name, description, required_answers) VALUES (1, 'ОБРАЩЕНИЯ С ОРУЖИЕМ',
+            'ТРЕНИРОВОЧНЫЕ ВОПРОСЫ ДЛЯ ПРОВЕРКИ ЗНАНИЯ ПРАВИЛ БЕЗОПАСНОГО ОБРАЩЕНИЯ С ОРУЖИЕМ', 3);
 
             INSERT INTO questions(test_id, id, question)
             VALUES(1, 1, '1. В соответствии с Федеральным законом «Об оружии» граждане Российской Федерации могут применять имеющееся у них на законных основаниях оружие:');

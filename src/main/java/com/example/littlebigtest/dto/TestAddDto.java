@@ -1,22 +1,35 @@
 package com.example.littlebigtest.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.extern.jackson.Jacksonized;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Accessors(chain = true)
+@Jacksonized
+@Builder
+@Getter
 public class TestAddDto {
 
     @NotBlank
-    private String name;
+    private final String name;
 
     @NotBlank
-    private String description;
+    private final String description;
+
+    @NotNull
+    private final Integer requiredAnswers;
+
+//    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+//    public TestAddDto(@JsonProperty("name") final String name,
+//                      @JsonProperty("description") final String description,
+//                      @JsonProperty("requiredAnswers") final Integer requiredAnswers) {
+//        this.name = name;
+//        this.description = description;
+//        this.requiredAnswers = requiredAnswers;
+//    }
 
 }

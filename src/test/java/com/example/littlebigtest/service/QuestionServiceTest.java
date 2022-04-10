@@ -8,6 +8,7 @@ import com.example.littlebigtest.dto.QuestionDto;
 import com.example.littlebigtest.dto.QuestionUpdDto;
 import com.example.littlebigtest.dto.TestAddDto;
 import com.example.littlebigtest.dto.TestDto;
+import com.example.littlebigtest.fixture.TestAddDtoFixture;
 import com.example.littlebigtest.model.TestEntity;
 import com.example.littlebigtest.repository.QuestionRepository;
 import com.example.littlebigtest.repository.TestRepository;
@@ -43,7 +44,7 @@ public class QuestionServiceTest extends AbstractIntegrationTest {
     @Test
     void questionAdd() {
         // arrange
-        final TestDto testDto = testService.addTest(new TestAddDto("Тесты ПДД", "тесты ПДД 2022"));
+        final TestDto testDto = testService.addTest(TestAddDtoFixture.createDefault());
         final QuestionAddDto questionAddDto = new QuestionAddDto()
                 .setTestId(testDto.getId())
                 .setQuestion("В каком случае водитель совершит вынужденную остановку?")
@@ -88,7 +89,7 @@ public class QuestionServiceTest extends AbstractIntegrationTest {
     @Test
     void questionDelete() {
         // arrange
-        final TestDto testDto = testService.addTest(new TestAddDto("Тесты ПДД", "тесты ПДД 2022"));
+        final TestDto testDto = testService.addTest(TestAddDtoFixture.createDefault());
         final QuestionAddDto questionAddDto = new QuestionAddDto()
                 .setTestId(testDto.getId())
                 .setQuestion("В каком случае водитель совершит вынужденную остановку?")
@@ -144,7 +145,7 @@ public class QuestionServiceTest extends AbstractIntegrationTest {
     @Test
     void questionFindById() {
         // arrange
-        final TestDto testDto = testService.addTest(new TestAddDto("Тесты ПДД", "тесты ПДД 2022"));
+        final TestDto testDto = testService.addTest(TestAddDtoFixture.createDefault());
         final QuestionAddDto questionAddDto = new QuestionAddDto()
                 .setTestId(testDto.getId())
                 .setQuestion("В каком случае водитель совершит вынужденную остановку?")
@@ -191,7 +192,7 @@ public class QuestionServiceTest extends AbstractIntegrationTest {
     @Test
     void questionUpdate() {
         // arrange
-        final TestDto testDto = testService.addTest(new TestAddDto("Тесты ПДД", "тесты ПДД 2022"));
+        final TestDto testDto = testService.addTest(TestAddDtoFixture.createDefault());
         final QuestionAddDto questionAddDto = new QuestionAddDto()
                 .setTestId(testDto.getId())
                 .setQuestion("В каком случае водитель совершит вынужденную остановку?")
