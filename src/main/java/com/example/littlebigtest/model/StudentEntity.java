@@ -39,5 +39,4 @@ public class StudentEntity {
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<ExamEntity> exams = new ArrayList<>();
 
-
 }
