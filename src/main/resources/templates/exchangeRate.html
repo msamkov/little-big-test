@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Welcome</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Поставщик</th>
+        <th>Валюта</th>
+        <th>Продать</th>
+        <th>Купить</th>
+    </tr>
+    <tr>
+    <tr th:each="rate : ${rates}">
+        <td th:utext="${rate.provider}">...</td>
+        <td th:utext="${rate.name}">...</td>
+        <td th:utext="${rate.sell}">...</td>
+        <td th:utext="${rate.buy}">...</td>
+    </tr>
+</table>
+
+</body>
+
+</html>
